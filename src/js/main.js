@@ -1,5 +1,5 @@
 import $ from './lib/lib';
 
-$('button').on('click', function () {
-  $(this).toggleClass('active');
-});
+$('button')
+  .toggleAttribute('data-id', 'fite7547hdh73sdhc8w')
+  .toggleAttribute('data-id');
