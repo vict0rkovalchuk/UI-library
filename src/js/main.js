@@ -1,5 +1,11 @@
 import $ from './lib/lib';
 
-$('button')
-  .toggleAttribute('data-id', 'fite7547hdh73sdhc8w')
-  .toggleAttribute('data-id');
+$('button').on('click', function () {
+  $('div').eq(2).toggleClass('active');
+});
+
+$('div').click(function () {
+  console.log($(this).index());
+});
+
+console.log($('div').eq(2).find('.some'));
