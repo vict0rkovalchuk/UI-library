@@ -16,7 +16,9 @@ $.prototype.modal = function (created) {
         $(target).fadeOut(500);
         document.body.style.overflow = '';
         if (created) {
-          document.querySelector(target).remove();
+          setTimeout(() => {
+            document.querySelector(target).remove();
+          }, 500);
         }
       });
     });
@@ -26,7 +28,9 @@ $.prototype.modal = function (created) {
         $(target).fadeOut(500);
         document.body.style.overflow = '';
         if (created) {
-          document.querySelector(target).remove();
+          setTimeout(() => {
+            document.querySelector(target).remove();
+          }, 500);
         }
       }
     });
@@ -40,15 +44,16 @@ $.prototype.createModal = function ({ text, btns } = {}) {
     modal.setAttribute('id', this[i].getAttribute('data-target').slice(1));
 
     const buttons = [];
-    for (let j = 0; j < btns.count; j++) {
+    for (let j = 0; j < btns.length; j++) {
+      let [btnText, classNames, close, cb] = btns[j];
       let btn = document.createElement('button');
-      btn.classList.add('btn', ...btns.settings[j][1]);
-      btn.textContent = btns.settings[j][0];
-      if (btns.settings[j][2]) {
+      btn.classList.add('btn', ...classNames);
+      btn.textContent = btnText;
+      if (close) {
         btn.setAttribute('data-close', 'true');
       }
-      if (btns.settings[j][3] && typeof btns.settings[j][3] === 'function') {
-        btn.addEventListener('click', btns.settings[j][3]);
+      if (cb && typeof cb === 'function') {
+        btn.addEventListener('click', cb);
       }
 
       buttons.push(btn);

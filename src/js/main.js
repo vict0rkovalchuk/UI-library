@@ -24,27 +24,24 @@ $('#trigger').click(() =>
     fugiat, quis ut, placeat delectus facilis similique eligendi iste
     dolor, cupiditate tempore inventore fugit soluta.`
     },
-    btns: {
-      count: 3,
-      settings: [
-        ['Close', ['btn-danger', 'mr-10'], true],
-        [
-          'Save changes',
-          ['btn-success'],
-          false,
-          () => {
-            alert('Saved');
-          }
-        ],
-        [
-          'Another btn',
-          ['btn-warning', 'ml-10'],
-          false,
-          () => {
-            alert('Third btn');
-          }
-        ]
+    btns: [
+      ['Close', ['btn-danger', 'mr-10'], true],
+      [
+        'Save changes',
+        ['btn-success'],
+        false,
+        () => {
+          alert('Saved');
+        }
+      ],
+      [
+        'Another btn',
+        ['btn-warning', 'ml-10'],
+        false,
+        () => {
+          alert('Third btn');
+        }
       ]
-    }
+    ]
   })
 );

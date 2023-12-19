@@ -45,7 +45,9 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function (create
         (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target).fadeOut(500);
         document.body.style.overflow = '';
         if (created) {
-          document.querySelector(target).remove();
+          setTimeout(() => {
+            document.querySelector(target).remove();
+          }, 500);
         }
       });
     });
@@ -54,7 +56,9 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function (create
         (0,_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target).fadeOut(500);
         document.body.style.overflow = '';
         if (created) {
-          document.querySelector(target).remove();
+          setTimeout(() => {
+            document.querySelector(target).remove();
+          }, 500);
         }
       }
     });
@@ -69,15 +73,16 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.createModal = function (
     modal.classList.add('modal');
     modal.setAttribute('id', this[i].getAttribute('data-target').slice(1));
     const buttons = [];
-    for (let j = 0; j < btns.count; j++) {
+    for (let j = 0; j < btns.length; j++) {
+      let [btnText, classNames, close, cb] = btns[j];
       let btn = document.createElement('button');
-      btn.classList.add('btn', ...btns.settings[j][1]);
-      btn.textContent = btns.settings[j][0];
-      if (btns.settings[j][2]) {
+      btn.classList.add('btn', ...classNames);
+      btn.textContent = btnText;
+      if (close) {
         btn.setAttribute('data-close', 'true');
       }
-      if (btns.settings[j][3] && typeof btns.settings[j][3] === 'function') {
-        btn.addEventListener('click', btns.settings[j][3]);
+      if (cb && typeof cb === 'function') {
+        btn.addEventListener('click', cb);
       }
       buttons.push(btn);
     }
@@ -30460,14 +30465,11 @@ __webpack_require__.r(__webpack_exports__);
     fugiat, quis ut, placeat delectus facilis similique eligendi iste
     dolor, cupiditate tempore inventore fugit soluta.`
   },
-  btns: {
-    count: 3,
-    settings: [['Close', ['btn-danger', 'mr-10'], true], ['Save changes', ['btn-success'], false, () => {
-      alert('Saved');
-    }], ['Another btn', ['btn-warning', 'ml-10'], false, () => {
-      alert('Third btn');
-    }]]
-  }
+  btns: [['Close', ['btn-danger', 'mr-10'], true], ['Save changes', ['btn-success'], false, () => {
+    alert('Saved');
+  }], ['Another btn', ['btn-warning', 'ml-10'], false, () => {
+    alert('Third btn');
+  }]]
 }));
 })();
 
