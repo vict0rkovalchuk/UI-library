@@ -14,3 +14,37 @@ $('.wrap').html(
 );
 
 $('.dropdown-toggle').dropdown();
+
+$('#trigger').click(() =>
+  $('#trigger').createModal({
+    text: {
+      title: 'Modal title',
+      body: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    Laboriosam exercitationem aliquid nostrum sequi quos ducimus
+    fugiat, quis ut, placeat delectus facilis similique eligendi iste
+    dolor, cupiditate tempore inventore fugit soluta.`
+    },
+    btns: {
+      count: 3,
+      settings: [
+        ['Close', ['btn-danger', 'mr-10'], true],
+        [
+          'Save changes',
+          ['btn-success'],
+          false,
+          () => {
+            alert('Saved');
+          }
+        ],
+        [
+          'Another btn',
+          ['btn-warning', 'ml-10'],
+          false,
+          () => {
+            alert('Third btn');
+          }
+        ]
+      ]
+    }
+  })
+);
