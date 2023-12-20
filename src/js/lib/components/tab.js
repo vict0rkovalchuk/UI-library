@@ -10,8 +10,10 @@ $.prototype.tab = function () {
         .closest('.tab')
         .find('.tab-content')
         .removeClass('tab-content--active')
+        .removeAttribute('style')
         .eq($(this[i]).index())
-        .addClass('tab-content--active');
+        .addClass('tab-content--active')
+        .fadeIn(500);
     });
   }
 };
